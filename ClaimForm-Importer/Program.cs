@@ -31,6 +31,7 @@ namespace ClaimForm_Importer
                         if (file.Name != "empty-form.pdf")
                         {
                             Console.WriteLine($"Importing \"{file.Name}\"");
+
                         }
                     }
                 }
@@ -38,4 +39,5 @@ namespace ClaimForm_Importer
             
         }
     }
+
 }
