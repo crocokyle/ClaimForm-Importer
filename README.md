@@ -16,8 +16,16 @@ FIREBASE_KEY=<Your Firebase Key>
 <img src="img/whiteboard.png">
 
 ## Training Results
-<img src="img/screen1.png">
-<img src="img/screen2.png">
+<table>
+  <tr>
+    <td>
+      <img src="img/screen1.png">
+    </td>
+    <td>
+      <img src="img/screen2.png">
+    </td>
+  </tr>
+ </table>
 
 
 ## Potential Improvments
