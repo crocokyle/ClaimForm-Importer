@@ -15,8 +15,10 @@ FIREBASE_KEY=<Your Firebase Key>
 ## Planning
 <img src="img/whiteboard.png">
 
-## Screenshots
+## Training Results
 <img src="img/ss1.png">
+<img src="img/ss2.png">
+
 
 ## Potential Improvments
 - Training data should have more variance in a real-world exmaple. 
