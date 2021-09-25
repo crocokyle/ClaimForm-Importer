@@ -15,13 +15,13 @@ namespace ClaimForm_Importer
             else
             {
                 string filepath = args[0];
-                Console.WriteLine($"Importing CMS1500 data from {filepath}...");
+                Console.WriteLine($"Importing CMS1500 data from \"{filepath}\"");
                 
                 DirectoryInfo d = new DirectoryInfo(filepath);
 
                 if (!(Directory.Exists(d.FullName)))
                 {
-                    Console.WriteLine($"File path: {d.FullName} does not exist");
+                    Console.WriteLine($"File path: \"{d.FullName}\" does not exist");
                     Environment.Exit(0);
                 }
                 else
@@ -30,7 +30,7 @@ namespace ClaimForm_Importer
                     {
                         if (file.Name != "empty-form.pdf")
                         {
-                            Console.WriteLine($"Importing {file.Name}...");
+                            Console.WriteLine($"Importing \"{file.Name}\"");
                         }
                     }
                 }
