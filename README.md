@@ -15,6 +15,7 @@ FIREBASE_KEY=<Your Firebase Key>
 ## Planning
 <img src="whiteboard.png">
 
-## Lessons Learned
+## Potential Improvments
 - Training data should have more variance in a real-world exmaple. 
   - ie. scans, mobile scans, partially handwritten, different color ink, different fonts, etc.
+- ACS Output should be validated and formatted in standardized ways
