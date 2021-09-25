@@ -1,0 +1,270 @@
+{
+    "modelInfo": {
+      "modelId": "ba9116fe-29f6-4062-94c9-11a1ba31c8ce",
+      "modelName": "CMS1500",
+      "attributes": {
+        "isComposed": false
+      },
+      "status": "ready",
+      "createdDateTime": "2021-09-25T23:15:40Z",
+      "lastUpdatedDateTime": "2021-09-25T23:15:50Z"
+    },
+    "trainResult": {
+      "averageModelAccuracy": 0.978,
+      "trainingDocuments": [
+        {
+          "documentName": "ex1.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        },
+        {
+          "documentName": "ex10.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        },
+        {
+          "documentName": "ex2.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        },
+        {
+          "documentName": "ex3.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        },
+        {
+          "documentName": "ex4.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        },
+        {
+          "documentName": "ex5.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        },
+        {
+          "documentName": "ex6.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        },
+        {
+          "documentName": "ex7.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        },
+        {
+          "documentName": "ex8.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        },
+        {
+          "documentName": "ex9.pdf",
+          "pages": 2,
+          "status": "succeeded"
+        }
+      ],
+      "fields": [
+        {
+          "fieldName": "Add_Plan_N",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Add_Plan_Y",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "CHAMPUS",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "CHAMPVA",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Cond_Auto_N",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Cond_Auto_Y",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Cond_Empl_N",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Cond_Empl_Y",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Cond_Other_N",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Cond_Other_Y",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Date_Current",
+          "accuracy": 0.7
+        },
+        {
+          "fieldName": "FECA_BLK_LUNG",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Group",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Insured_Address",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Insured_City",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Insured_DOB",
+          "accuracy": 0.9
+        },
+        {
+          "fieldName": "Insured_EmpSch",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Insured_Female",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Insured_ID",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Insured_Male",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Insured_Name",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Insured_Phone",
+          "accuracy": 0.8
+        },
+        {
+          "fieldName": "Insured_State",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Insured_Zip",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Medicaid",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Medicare",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Other_ID",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Patient_Address",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Patient_City",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Patient_DOB",
+          "accuracy": 0.8
+        },
+        {
+          "fieldName": "Patient_EmpSch",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Patient_Female",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Patient_Male",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Patient_Name",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Patient_Phone",
+          "accuracy": 0.9
+        },
+        {
+          "fieldName": "Patient_State",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Patient_Zip",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Physician",
+          "accuracy": 0.9
+        },
+        {
+          "fieldName": "Physician_ID",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Prel_Child",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Prel_Other",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Prel_Self",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Prel_Spouse",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Pstat_Employed",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Pstat_FT_Student",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Pstat_Married",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Pstat_Other",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Pstat_PT_Student",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Pstat_Single",
+          "accuracy": 0.995
+        },
+        {
+          "fieldName": "Signed_Date",
+          "accuracy": 0.9
+        }
+      ],
+      "errors": []
+    }
+  }
