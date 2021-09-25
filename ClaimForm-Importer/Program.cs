@@ -6,7 +6,16 @@ namespace ClaimForm_Importer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if (args == null || args.Length != 1)
+            {
+                Console.WriteLine("Please specify only a source folder argument.");
+                Console.WriteLine("Usage: ClaimForm.exe <source-folder>");
+            }
+            else
+            {
+                Console.WriteLine($"Importing CMS1500 data from {args[0]}...");
+            }
+            
         }
     }
 }
