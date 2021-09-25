@@ -13,10 +13,10 @@ FIREBASE_KEY=<Your Firebase Key>
 `ClaimForm.exe <source-folder>`
 
 ## Planning
-<img src="whiteboard.png">
+<img src="img/whiteboard.png">
 
 ## Screenshots
-<img src="ss1.png">
+<img src="img/ss1.png">
 
 ## Potential Improvments
 - Training data should have more variance in a real-world exmaple. 
