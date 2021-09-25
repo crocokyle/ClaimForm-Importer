@@ -7,3 +7,5 @@ A C# console app that reads CMS1500 health insurance forms from a folder, extrac
 
 `ClaimForm.exe <source-folder>`
 
+## Planning
+<img src="whiteboard.png">
