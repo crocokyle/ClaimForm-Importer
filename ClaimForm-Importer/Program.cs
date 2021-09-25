@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace ClaimForm_Importer
 {
@@ -13,7 +14,26 @@ namespace ClaimForm_Importer
             }
             else
             {
-                Console.WriteLine($"Importing CMS1500 data from {args[0]}...");
+                string filepath = args[0];
+                Console.WriteLine($"Importing CMS1500 data from {filepath}...");
+                
+                DirectoryInfo d = new DirectoryInfo(filepath);
+
+                if (!(Directory.Exists(d.FullName)))
+                {
+                    Console.WriteLine($"File path: {d.FullName} does not exist");
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    foreach (var file in d.GetFiles("*.pdf"))
+                    {
+                        if (file.Name != "empty-form.pdf")
+                        {
+                            Console.WriteLine($"Importing {file.Name}...");
+                        }
+                    }
+                }
             }
             
         }
