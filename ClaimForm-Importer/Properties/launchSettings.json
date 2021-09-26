@@ -2,7 +2,7 @@
   "profiles": {
     "ClaimForm-Importer": {
       "commandName": "Project",
-      "commandLineArgs": "..\\..\\..\\..\\sample-data"
+      "commandLineArgs": "..\\..\\..\\..\\data\\test"
     }
   }
 }
