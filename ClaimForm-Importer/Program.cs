@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using ClaimForm_Importer;
-using CSHttpClientSample;
+using System.Threading.Tasks;
 
 namespace ClaimForm_Importer
 {
     class Program
     {
-        static void Main(string[] args)
+        public static double fieldConfidenceThreshold = 0.7;
+        public static double formConfidenceThreshold = 0.7;
+        static async Task Main(string[] args)
         {
             // Load Environment Variables
             var root = Directory.GetCurrentDirectory();
@@ -21,26 +23,29 @@ namespace ClaimForm_Importer
             // Verify args and directory
             if (CheckArgs(args) & CheckDir(d.FullName))
             {
-                FindPDFs(d);
+                await FindPDFs(d);
             }
         }
 
-        static void FindPDFs(DirectoryInfo d)
+        static async Task FindPDFs(DirectoryInfo d)
         {
             Console.WriteLine($"Importing forms (CMS1500) from \"{d.FullName}\"");
 
             // Iterate through each pdf that isn't "empty-form.pdf"
             foreach (var file in d.GetFiles("*.pdf"))
             {
-                if (file.Name != "empty-form.pdf")
+                if (file.Name != "empty-form.pdf" && file.Name != "test2.pdf") // TODO Remove second conditional
                 {
-                    Console.WriteLine($"Importing \"{file.Name}\"");
-                    FormHandler.SendForm(file.FullName);
-                    Console.WriteLine("Hit ENTER to exit...");
-                    Console.ReadLine();
+                    // Upload the pdf and wait for a response.
+                    Console.WriteLine($"Uploading form {file.Name}...");
+                    Task formData = FormHandler.SendForm(file.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
+                    // Anything we can do while waiting?
+                    Console.WriteLine("Processing...");
+                    await formData;
                 }
             }
         }
+
         static bool CheckArgs(string[] args)
         {
             // Check for inappropriate argument length
