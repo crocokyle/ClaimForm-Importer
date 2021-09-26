@@ -33,5 +33,6 @@ FIREBASE_KEY=<Your Firebase Key>
 - Training data should have more variance in a real-world exmaple. 
   - ie. scans, mobile scans, partially handwritten, different color ink, different fonts, etc.
 - ACS Output should be validated and formatted in standardized ways
-- Convert `FormRecognizer.MakeRequest()` to an async function with timer to acheive a faster submission times on large folders while not exceeded API Rate limits. 
-  - This would allow early results to reach Firebase while later submissions are still processing in Azure
+- Convert `FormRecognizer.MakeRequest()` to an async function with timer.
+  - Allows faster submission times on large folders while not exceeding API Rate limits. 
+  - Allows early results to reach Firebase while later submissions are still processing in Azure.
