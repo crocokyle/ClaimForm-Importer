@@ -35,6 +35,7 @@ ClaimForm.exe <source-folder>
 - Training data should have more variance in a real-world exmaple. 
   - ie. scans, mobile scans, partially handwritten, different color ink, different fonts, etc.
 - ACS Output should be validated and formatted in standardized ways
+- Eliminate processing the second useless page in the form
 - Convert `FormRecognizer.MakeRequest()` to an async function with timer.
   - Allows faster submission times on large folders while not exceeding API Rate limits. 
   - Allows early results to reach Firebase while later submissions are still processing in Azure.
