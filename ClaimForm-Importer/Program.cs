@@ -39,11 +39,15 @@ namespace ClaimForm_Importer
                     // Upload the pdf and wait for a response.
                     Console.WriteLine($"Processing form {file.Name}...");
                     Dictionary<string, string> formData = await FormHandler.SendForm(file.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
-    
+
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Analysis Complete! - Form Data:");
+                    Console.WriteLine("-----------------------------------------------------");
                     foreach (KeyValuePair<string, string> kvp in formData)
                     {
                         Console.WriteLine($"{kvp.Key}: {kvp.Value}");
                     }
+                    Console.WriteLine("-----------------------------------------------------");
                 }
             }
         }
