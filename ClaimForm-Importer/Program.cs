@@ -37,11 +37,13 @@ namespace ClaimForm_Importer
                 if (file.Name != "empty-form.pdf" && file.Name != "test2.pdf") // TODO Remove second conditional
                 {
                     // Upload the pdf and wait for a response.
-                    Console.WriteLine($"Uploading form {file.Name}...");
-                    Task formData = FormHandler.SendForm(file.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
-                    // Anything we can do while waiting?
-                    Console.WriteLine("Processing...");
-                    await formData;
+                    Console.WriteLine($"Processing form {file.Name}...");
+                    Dictionary<string, string> formData = await FormHandler.SendForm(file.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
+    
+                    foreach (KeyValuePair<string, string> kvp in formData)
+                    {
+                        Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+                    }
                 }
             }
         }
