@@ -6,6 +6,7 @@ A C# console app that reads CMS1500 health insurance forms from a folder, extrac
 ## Usage
 - Generate a `.env` file containing your Azure and Firebase API keys, as well as your FormRecognizer ModelID:
 ```env
+ACS_ENDPOINT=<Your ACS Endpoint>
 ACS_KEY=<Your ACS Key>
 MODEL_ID=<Your ACS FormRecognizer ModelID>
 FIREBASE_KEY=<Your Firebase Key>
