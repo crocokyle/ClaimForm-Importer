@@ -4,16 +4,17 @@
 A C# console app that reads CMS1500 health insurance forms from a folder, extracts the data with Azure Cognitive Services, and sends the information to Firebase.
 
 ## Usage
-- Generate a `.env` file containing your Azure and Firebase API keys, as well as your FormRecognizer ModelID:
+- Create a `.env` file within the same folder as `ClaimForm.exe`
 ```env
 ACS_ENDPOINT=<Your ACS Endpoint>
 ACS_KEY=<Your ACS Key>
 MODEL_ID=<Your ACS FormRecognizer ModelID>
 FIREBASE_KEY=<Your Firebase Key>
 ```
-- Run the app:
-`ClaimForm.exe <source-folder>`
-
+- Run the app, where `<source-folder>` is the folder containing your CMS1500 forms:
+```
+ClaimForm.exe <source-folder>
+```
 ## Planning
 <img src="img/whiteboard.png">
 
