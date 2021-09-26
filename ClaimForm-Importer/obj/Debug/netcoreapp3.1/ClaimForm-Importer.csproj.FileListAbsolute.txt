@@ -11,3 +11,9 @@ C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\obj\Debug\netcoreapp3.1\C
 C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\obj\Debug\netcoreapp3.1\ClaimForm-Importer.dll
 C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\obj\Debug\netcoreapp3.1\ClaimForm-Importer.pdb
 C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\obj\Debug\netcoreapp3.1\ClaimForm-Importer.genruntimeconfig.cache
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Debug\netcoreapp3.1\Azure.AI.FormRecognizer.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Debug\netcoreapp3.1\Azure.Core.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Debug\netcoreapp3.1\System.Memory.Data.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\obj\Debug\netcoreapp3.1\ClaimForm-Importer.csproj.CopyComplete
