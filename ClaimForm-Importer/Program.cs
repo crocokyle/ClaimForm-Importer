@@ -35,7 +35,7 @@ namespace ClaimForm_Importer
                 if (file.Name != "empty-form.pdf")
                 {
                     Console.WriteLine($"Importing \"{file.Name}\"");
-                    FormRecognizer.MakeRequest(file.FullName);
+                    FormHandler.SendForm(file.FullName);
                     Console.WriteLine("Hit ENTER to exit...");
                     Console.ReadLine();
                 }
