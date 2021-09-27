@@ -23,30 +23,36 @@ namespace ClaimForm_Importer
             {
                 // Verify directory
                 filepath = args[0];
-                DirectoryInfo d = new DirectoryInfo(filepath);
-                if (CheckDir(d.FullName))
+                DirectoryInfo directory = new DirectoryInfo(filepath);
+                if (CheckDir(directory.FullName))
                 {
-                    await FindPDFs(d);
+                    await FindPdfFilesAsync(directory);
                 }
                 else
+                {
+                    // Exit, directory does not exist
                     Environment.Exit(66);
+                }
             }
             else
+            {
+                // Exit, argments not met
                 Environment.Exit(78);
+            }
         }
 
-        static async Task FindPDFs(DirectoryInfo d)
+        static async Task FindPdfFilesAsync(DirectoryInfo directory)
         {
-            Console.WriteLine($"Importing forms (CMS1500) from \"{d.FullName}\"");
+            Console.WriteLine($"Importing forms (CMS1500) from \"{directory.FullName}\"");
 
             // Iterate through each pdf that isn't "empty-form.pdf"
-            foreach (var file in d.GetFiles("*.pdf"))
+            foreach (var pdfFile in directory.GetFiles("*.pdf"))
             {
-                if (file.Name != "empty-form.pdf")
+                if (pdfFile.Name != "empty-form.pdf")
                 {
                     // Upload the pdf and wait for a response.
-                    Console.WriteLine($"Processing form {file.Name}...");
-                    Dictionary<string, string> formData = await FormHandler.SendForm(file.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
+                    Console.WriteLine($"Processing form {pdfFile.Name}...");
+                    Dictionary<string, string> formData = await FormHandler.SendFormAsync(pdfFile.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
 
                     // Display the output
                     Console.WriteLine("\n");
@@ -75,14 +81,16 @@ namespace ClaimForm_Importer
         static bool CheckArgs(string[] args)
         {
             // Check for inappropriate argument length
-            if (args == null || args.Length != 1)
+            if (args?.Length != 1)
             {
                 Console.WriteLine("Please specify only a source folder argument.");
                 Console.WriteLine("Usage: ClaimForm.exe <source-folder>");
                 return false;
             }
             else
+            {
                 return true;
+            }
         }
 
         static bool CheckDir(string dir)
@@ -94,7 +102,9 @@ namespace ClaimForm_Importer
                 return false;
             }
             else
+            { 
                 return true;
+            }
         }
     }
 }

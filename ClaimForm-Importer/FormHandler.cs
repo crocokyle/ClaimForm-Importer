@@ -10,7 +10,7 @@ namespace ClaimForm_Importer
 {
     static class FormHandler
     {
-        public static async Task<Dictionary<string, string>> SendForm(string pdfPath, double formConfidenceThreshold, double fieldConfidenceThreshold)
+        public static async Task<Dictionary<string, string>> SendFormAsync(string pdfPath, double formConfidenceThreshold, double fieldConfidenceThreshold)
         {
             // Create pdf FileStream
             using var stream = new FileStream(pdfPath, FileMode.Open);
@@ -36,6 +36,7 @@ namespace ClaimForm_Importer
                 Console.WriteLine($"Form of type: {form.FormType}");
 
                 if (form.FormTypeConfidence.HasValue)
+                {
                     Console.WriteLine($"Form type confidence: {form.FormTypeConfidence.Value}");
 
                     // Check for low form confidence
@@ -44,6 +45,7 @@ namespace ClaimForm_Importer
                         Console.WriteLine($"{pdfPath} confidence is below the threshold ({formConfidenceThreshold}).");
                         continue;
                     }
+                }
 
                 // Iterate through the fields in the response
                 Console.WriteLine($"Form was analyzed with model with ID: {form.ModelId}");
@@ -54,8 +56,9 @@ namespace ClaimForm_Importer
                     // Is the field a SelectionMark?
                     // NOTE: field confidence is very high on SelectionMarks, but a check could be added
                     if (field.Value.ValueType.ToString() == "SelectionMark")
+                    {
                         value = field.Value.AsSelectionMarkState().ToString();
-
+                    }
                     else
                     {
                         // Check for empty field values
