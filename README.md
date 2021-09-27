@@ -13,7 +13,11 @@ FIREBASE_URL=<Your Firebase URL>
 ```
 - Run the app, where `<source-folder>` is the folder containing your CMS1500 forms:
 ```
-ClaimForm.exe <source-folder>
+ClaimForm-Importer.exe <source-folder>
+```
+- There are completed demo in the data folder of the release
+```
+ClaimForm-Importer.exe data/test
 ```
 ## Planning
 <img src="img/whiteboard.png">
