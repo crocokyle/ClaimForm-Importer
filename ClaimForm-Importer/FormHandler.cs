@@ -35,15 +35,15 @@ namespace ClaimForm_Importer
             {
                 Console.WriteLine($"Form of type: {form.FormType}");
 
-                // Check for low form confidence
-                if (form.FormTypeConfidence.Value < formConfidenceThreshold)
-                {
-                    Console.WriteLine($"{pdfPath} confidence is below the threshold ({formConfidenceThreshold}).");
-                    continue;
-                }
-
                 if (form.FormTypeConfidence.HasValue)
                     Console.WriteLine($"Form type confidence: {form.FormTypeConfidence.Value}");
+
+                    // Check for low form confidence
+                    if (form.FormTypeConfidence.Value < formConfidenceThreshold)
+                    {
+                        Console.WriteLine($"{pdfPath} confidence is below the threshold ({formConfidenceThreshold}).");
+                        continue;
+                    }
 
                 // Iterate through the fields in the response
                 Console.WriteLine($"Form was analyzed with model with ID: {form.ModelId}");
@@ -54,9 +54,8 @@ namespace ClaimForm_Importer
                     // Is the field a SelectionMark?
                     // NOTE: field confidence is very high on SelectionMarks, but a check could be added
                     if (field.Value.ValueType.ToString() == "SelectionMark")
-                    {
                         value = field.Value.AsSelectionMarkState().ToString();
-                    }
+
                     else
                     {
                         // Check for empty field values
@@ -77,9 +76,7 @@ namespace ClaimForm_Importer
 
                         // Assign the value for the field to what was guessed by ACS
                         else
-                        {
                             value = field.ValueData.Text;
-                        }
                     }
                     // Add the determined value to the dictionary
                     formData.Add(field.Name, value);

@@ -12,15 +12,16 @@ namespace ClaimForm_Importer
         static async Task Main(string[] args)
         {
             // Load Environment Variables
-            var root = Directory.GetCurrentDirectory();
-            var dotenv = Path.Combine(root, ".env");
+            string root = Directory.GetCurrentDirectory();
+            string dotenv = Path.Combine(root, ".env");
 
             DotEnv.Load(dotenv);
 
-            // Verify args and directory
+            // Verify args
             string filepath;
             if (CheckArgs(args))
-            { 
+            {
+                // Verify directory
                 filepath = args[0];
                 DirectoryInfo d = new DirectoryInfo(filepath);
                 if (CheckDir(d.FullName))
@@ -47,6 +48,7 @@ namespace ClaimForm_Importer
                     Console.WriteLine($"Processing form {file.Name}...");
                     Dictionary<string, string> formData = await FormHandler.SendForm(file.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
 
+                    // Display the output
                     Console.WriteLine("\n");
                     Console.WriteLine("Analysis Complete! - Form Data:");
                     Console.WriteLine("-----------------------------------------------------");
