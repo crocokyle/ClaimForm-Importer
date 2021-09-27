@@ -14,7 +14,7 @@ namespace ClaimForm_Importer
             // Load Environment Variables
             var root = Directory.GetCurrentDirectory();
             var dotenv = Path.Combine(root, ".env");
-            Console.WriteLine(dotenv);
+
             DotEnv.Load(dotenv);
 
             // Verify args and directory
