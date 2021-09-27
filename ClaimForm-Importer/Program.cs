@@ -48,6 +48,17 @@ namespace ClaimForm_Importer
                         Console.WriteLine($"{kvp.Key}: {kvp.Value}");
                     }
                     Console.WriteLine("-----------------------------------------------------");
+
+                    // Send the returned data to firebase
+                    var response = await Firebase.PostData(formData);
+                    if (response.StatusCode.ToString() == "200")
+                        Console.WriteLine("Data sent to Firebase successfully!");
+                    else
+                    { 
+                        Console.WriteLine("Data failed to send to Firebase with the following response:");
+                        Console.WriteLine(response.ToString());
+                    }
+
                 }
             }
         }
