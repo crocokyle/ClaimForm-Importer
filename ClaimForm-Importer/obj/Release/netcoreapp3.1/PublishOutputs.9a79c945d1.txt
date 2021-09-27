@@ -1,0 +1,11 @@
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\ClaimForm-Importer.exe
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\ClaimForm-Importer.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\ClaimForm-Importer.deps.json
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\ClaimForm-Importer.runtimeconfig.json
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\ClaimForm-Importer.pdb
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\Azure.AI.FormRecognizer.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\Azure.Core.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\Newtonsoft.Json.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\System.Memory.Data.dll
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Release\netcoreapp3.1\publish\System.Text.Encodings.Web.dll

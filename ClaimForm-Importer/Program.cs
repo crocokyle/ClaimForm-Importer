@@ -17,14 +17,21 @@ namespace ClaimForm_Importer
             Console.WriteLine(dotenv);
             DotEnv.Load(dotenv);
 
-            string filepath = args[0];
-            DirectoryInfo d = new DirectoryInfo(filepath);
-
             // Verify args and directory
-            if (CheckArgs(args) & CheckDir(d.FullName))
-            {
-                await FindPDFs(d);
+            string filepath;
+            if (CheckArgs(args))
+            { 
+                filepath = args[0];
+                DirectoryInfo d = new DirectoryInfo(filepath);
+                if (CheckDir(d.FullName))
+                {
+                    await FindPDFs(d);
+                }
+                else
+                    Environment.Exit(66);
             }
+            else
+                Environment.Exit(78);
         }
 
         static async Task FindPDFs(DirectoryInfo d)
