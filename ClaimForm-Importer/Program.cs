@@ -7,7 +7,7 @@ namespace ClaimForm_Importer
 {
     class Program
     {
-        public static double fieldConfidenceThreshold = 0.7;
+        public static double fieldConfidenceThreshold = 0.9;
         public static double formConfidenceThreshold = 0.7;
         static async Task Main(string[] args)
         {
@@ -34,7 +34,7 @@ namespace ClaimForm_Importer
             // Iterate through each pdf that isn't "empty-form.pdf"
             foreach (var file in d.GetFiles("*.pdf"))
             {
-                if (file.Name != "empty-form.pdf" && file.Name != "test2.pdf") // TODO Remove second conditional
+                if (file.Name != "empty-form.pdf")
                 {
                     // Upload the pdf and wait for a response.
                     Console.WriteLine($"Processing form {file.Name}...");
@@ -48,17 +48,17 @@ namespace ClaimForm_Importer
                         Console.WriteLine($"{kvp.Key}: {kvp.Value}");
                     }
                     Console.WriteLine("-----------------------------------------------------");
+                    Console.WriteLine("\n");
 
-                    // Send the returned data to firebase
+                    // Send the returned data to firebase and check the response
                     var response = await Firebase.PostData(formData);
-                    if (response.StatusCode.ToString() == "200")
+                    if (response.StatusCode.ToString() == "OK")
                         Console.WriteLine("Data sent to Firebase successfully!");
                     else
-                    { 
+                    {
                         Console.WriteLine("Data failed to send to Firebase with the following response:");
                         Console.WriteLine(response.ToString());
                     }
-
                 }
             }
         }
