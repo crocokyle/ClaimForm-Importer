@@ -59,19 +59,20 @@ namespace ClaimForm_Importer
                     else
                     {
                         // Exit, we didn't process anything.
-                        Environment.Exit(66);
+                        Console.WriteLine($"No forms were found in \"{filepath}\"");
                     }
                 }
                 else
                 {
                     // Exit, directory does not exist
-                    Environment.Exit(66);
+                    Console.WriteLine($"File path: \"{filepath}\" does not exist");
                 }
             }
             else
             {
                 // Exit, argments not met
-                Environment.Exit(78);
+                Console.WriteLine("Please specify a source folder argument.");
+                Console.WriteLine("Usage: ClaimForm.exe <source-folder>");
             }
         }
 
