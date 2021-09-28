@@ -36,11 +36,19 @@ ClaimForm-Importer.exe data/test
 
 
 ## Potential Improvments
+- `FormHandler` should have better encapsulation
+  - Environment variables should be in a constructor or passed into the `SendFormAsync` method from main.
+  - `FormHandler` should have a child class of `Field` to handle various field types.
+
+- Eliminate processing the second useless page in the form
+
 - Training data should have more variance in a real-world exmaple. 
   - ie. scans, mobile scans, partially handwritten, different color ink, different fonts, etc.
-- Eliminate processing the second useless page in the form
+
 - More efficient use of async methods
   - Would allow faster submission times on large folders while not exceeding API Rate limits. 
   - Would allow first results to reach Firebase while other submissions are still processing in Azure.
+
 - ACS Output should be validated by checking for field types in a separate method
+
 - Error handling for missing `.env` file or incorrect values
