@@ -35,7 +35,7 @@ ClaimForm.exe sample-data/test
  </table>
 
 
-## Potential Improvments
+## Future Improvments
 - `FormHandler` should have better encapsulation
   - Environment variables should be in a constructor or passed into the `SendFormAsync` method from main.
   - `FormHandler` should have a child class of `Field` to handle various field types.
