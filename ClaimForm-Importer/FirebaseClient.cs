@@ -14,12 +14,6 @@ namespace ClaimForm_Importer
         public string Database;
         private string RequestUrl;
 
-        public FirebaseClient(string url)
-        {
-            this.Url = url;
-            this.Database = "CMS1500";
-            this.RequestUrl = $"{this.Url}{this.Database}.json";
-        }
         public FirebaseClient(string url, string database)
         {
             this.Url = url;

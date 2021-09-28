@@ -43,7 +43,9 @@ namespace ClaimForm_Importer
                             Console.WriteLine("\n");
 
                             // Send the returned data to firebase and check the response
-                            var firebaseClient = new FirebaseClient(Environment.GetEnvironmentVariable("FIREBASE_URL"));
+                            string firebaseUrl = Environment.GetEnvironmentVariable("FIREBASE_URL");
+                            string database = "CMS1500";
+                            var firebaseClient = new FirebaseClient(firebaseUrl, database);
                             var response = await firebaseClient.PostData(form);
                             if (response.StatusCode.ToString() == "OK")
                                 Console.WriteLine("Data sent to Firebase successfully!");
