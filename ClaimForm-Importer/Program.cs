@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ClaimForm_Importer
@@ -21,10 +22,9 @@ namespace ClaimForm_Importer
             if (args?.Length > 0)
             {
                 // Verify directory
-                string filepath;
-                filepath = args[0];
-                DirectoryInfo directory = new DirectoryInfo(filepath);
-                if (CheckDir(directory.FullName))
+                string filepath = args?.FirstOrDefault();
+                var directory = new DirectoryInfo(filepath);
+                if (Directory.Exists(directory?.FullName))
                 {
 
                     // Process the forms
@@ -99,35 +99,6 @@ namespace ClaimForm_Importer
                 }
             }
             return formsData;
-        }
-
-        static bool CheckArgs(string[] args)
-        {
-            // Check for inappropriate argument length
-            if (args?.Length != 1)
-            {
-                Console.WriteLine("Please specify only a source folder argument.");
-                Console.WriteLine("Usage: ClaimForm.exe <source-folder>");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        static bool CheckDir(string dir)
-        {
-            // Make sure the path exists
-            if (!(Directory.Exists(dir)))
-            {
-                Console.WriteLine($"File path: \"{dir}\" does not exist");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
     }
 }
