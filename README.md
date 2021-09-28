@@ -13,11 +13,11 @@ FIREBASE_URL=<Your Firebase URL>
 ```
 - Run the app, where `<source-folder>` is the folder containing your CMS1500 forms:
 ```
-ClaimForm-Importer.exe <source-folder>
+ClaimForm.exe <source-folder>
 ```
-- There are completed demo in the data folder of the release
+- There are sample forms in the `sample-data/test` folder of the release
 ```
-ClaimForm-Importer.exe data/test
+ClaimForm.exe sample-data/test
 ```
 ## Planning
 <img src="img/whiteboard.png">
@@ -35,7 +35,7 @@ ClaimForm-Importer.exe data/test
  </table>
 
 
-## Potential Improvments
+## Future Improvments
 - `FormHandler` should have better encapsulation
   - Environment variables should be in a constructor or passed into the `SendFormAsync` method from main.
   - `FormHandler` should have a child class of `Field` to handle various field types.
