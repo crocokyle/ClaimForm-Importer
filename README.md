@@ -15,7 +15,7 @@ FIREBASE_URL=<Your Firebase URL>
 ```
 ClaimForm.exe <source-folder>
 ```
-- There are sample forms in the `sample-data` folder of the release
+- There are sample forms in the `sample-data/test` folder of the release
 ```
 ClaimForm.exe sample-data/test
 ```
