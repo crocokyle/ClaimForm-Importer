@@ -18,15 +18,52 @@ namespace ClaimForm_Importer
             DotEnv.Load(dotenv);
 
             // Verify args
-            string filepath;
-            if (CheckArgs(args))
+            if (args?.Length > 0)
             {
                 // Verify directory
+                string filepath;
                 filepath = args[0];
                 DirectoryInfo directory = new DirectoryInfo(filepath);
                 if (CheckDir(directory.FullName))
                 {
-                    await FindPdfFilesAsync(directory);
+
+                    // Process the forms
+                    List<Dictionary<string, string>> formsData = await ProcessPdfFilesAsync(directory);
+
+                    // Check to see if we processed anything
+                    if (formsData.Count > 0)
+                    {
+                        foreach (Dictionary<string, string> form in formsData)
+                        {
+                            // Display the output
+                            Console.WriteLine("\n");
+                            Console.WriteLine("Analysis Complete! - Form Data:");
+                            Console.WriteLine("-----------------------------------------------------");
+                            foreach (KeyValuePair<string, string> kvp in form)
+                            {
+                                Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+                            }
+                            Console.WriteLine("-----------------------------------------------------");
+                            Console.WriteLine("\n");
+
+                            // Send the returned data to firebase and check the response
+                            var response = await Firebase.PostData(form);
+                            if (response.StatusCode.ToString() == "OK")
+                                Console.WriteLine("Data sent to Firebase successfully!");
+                            else
+                            {
+                                Console.WriteLine("Data failed to send to Firebase with the following response:");
+                                Console.WriteLine(response.ToString());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Exit, we didn't process anything.
+                        Console.WriteLine($"No forms were found in {directory.FullName}. Press <ENTER> to exit.");
+                        Console.ReadLine();
+                        Environment.Exit(66);
+                    }
                 }
                 else
                 {
@@ -41,41 +78,27 @@ namespace ClaimForm_Importer
             }
         }
 
-        static async Task FindPdfFilesAsync(DirectoryInfo directory)
+        static async Task<List<Dictionary<string, string>>> ProcessPdfFilesAsync(DirectoryInfo directory)
         {
+            List<Dictionary<string, string>> formsData = new List<Dictionary<string, string>>();
+
             Console.WriteLine($"Importing forms (CMS1500) from \"{directory.FullName}\"");
 
             // Iterate through each pdf that isn't "empty-form.pdf"
             foreach (var pdfFile in directory.GetFiles("*.pdf"))
             {
+
                 if (pdfFile.Name != "empty-form.pdf")
                 {
                     // Upload the pdf and wait for a response.
                     Console.WriteLine($"Processing form {pdfFile.Name}...");
-                    Dictionary<string, string> formData = await FormHandler.SendFormAsync(pdfFile.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
+                    Dictionary<string, string> thisFormData = await FormHandler.SendFormAsync(pdfFile.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
 
-                    // Display the output
-                    Console.WriteLine("\n");
-                    Console.WriteLine("Analysis Complete! - Form Data:");
-                    Console.WriteLine("-----------------------------------------------------");
-                    foreach (KeyValuePair<string, string> kvp in formData)
-                    {
-                        Console.WriteLine($"{kvp.Key}: {kvp.Value}");
-                    }
-                    Console.WriteLine("-----------------------------------------------------");
-                    Console.WriteLine("\n");
-
-                    // Send the returned data to firebase and check the response
-                    var response = await Firebase.PostData(formData);
-                    if (response.StatusCode.ToString() == "OK")
-                        Console.WriteLine("Data sent to Firebase successfully!");
-                    else
-                    {
-                        Console.WriteLine("Data failed to send to Firebase with the following response:");
-                        Console.WriteLine(response.ToString());
-                    }
+                    // Add this form data to our list of forms data
+                    formsData.Add(thisFormData);
                 }
             }
+            return formsData;
         }
 
         static bool CheckArgs(string[] args)
@@ -102,7 +125,7 @@ namespace ClaimForm_Importer
                 return false;
             }
             else
-            { 
+            {
                 return true;
             }
         }
