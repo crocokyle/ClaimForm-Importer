@@ -1,0 +1,2 @@
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Debug\netcoreapp3.1\win-x64\publish\ClaimForm-Importer.pdb
+C:\Users\me\code\ClaimForm-Importer\ClaimForm-Importer\bin\Debug\netcoreapp3.1\win-x64\publish\ClaimForm-Importer.exe
