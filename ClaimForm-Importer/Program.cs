@@ -26,7 +26,6 @@ namespace ClaimForm_Importer
                 var directory = new DirectoryInfo(filepath);
                 if (Directory.Exists(directory?.FullName))
                 {
-
                     // Process the forms
                     List<Dictionary<string, string>> formsData = await ProcessPdfFilesAsync(directory);
 
@@ -47,7 +46,8 @@ namespace ClaimForm_Importer
                             Console.WriteLine("\n");
 
                             // Send the returned data to firebase and check the response
-                            var response = await Firebase.PostData(form);
+                            var firebaseClient = new FirebaseClient(Environment.GetEnvironmentVariable("FIREBASE_URL"));
+                            var response = await firebaseClient.PostData(form);
                             if (response.StatusCode.ToString() == "OK")
                                 Console.WriteLine("Data sent to Firebase successfully!");
                             else
@@ -80,12 +80,12 @@ namespace ClaimForm_Importer
 
         static async Task<List<Dictionary<string, string>>> ProcessPdfFilesAsync(DirectoryInfo directory)
         {
-            List<Dictionary<string, string>> formsData = new List<Dictionary<string, string>>();
+            var formsData = new List<Dictionary<string, string>>();
 
             Console.WriteLine($"Importing forms (CMS1500) from \"{directory.FullName}\"");
 
             // Iterate through each pdf that isn't "empty-form.pdf"
-            foreach (var pdfFile in directory.GetFiles("*.pdf"))
+            foreach (FileInfo pdfFile in directory.GetFiles("*.pdf"))
             {
 
                 if (pdfFile.Name != "empty-form.pdf")
