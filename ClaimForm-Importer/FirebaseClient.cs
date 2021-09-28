@@ -20,7 +20,7 @@ namespace ClaimForm_Importer
             this.Database = database;
             this.RequestUrl = $"{this.Url}{this.Database}.json";
         }
-        public async Task<HttpResponseMessage> PostData(Dictionary<string, string> data)
+        public async Task<HttpResponseMessage> PostDataAsync(Dictionary<string, string> data)
         {
             Console.WriteLine($"Sending data to {RequestUrl}...");
 
