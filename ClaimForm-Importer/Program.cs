@@ -8,14 +8,11 @@ namespace ClaimForm_Importer
 {
     class Program
     {
-        public static double fieldConfidenceThreshold = 0.9;
-        public static double formConfidenceThreshold = 0.7;
         static async Task Main(string[] args)
         {
             // Load Environment Variables
             string root = Directory.GetCurrentDirectory();
             string dotenv = Path.Combine(root, ".env");
-
             DotEnv.Load(dotenv);
 
             // Verify args
@@ -60,8 +57,6 @@ namespace ClaimForm_Importer
                     else
                     {
                         // Exit, we didn't process anything.
-                        Console.WriteLine($"No forms were found in {directory.FullName}. Press <ENTER> to exit.");
-                        Console.ReadLine();
                         Environment.Exit(66);
                     }
                 }
@@ -87,12 +82,11 @@ namespace ClaimForm_Importer
             // Iterate through each pdf that isn't "empty-form.pdf"
             foreach (FileInfo pdfFile in directory.GetFiles("*.pdf"))
             {
-
                 if (pdfFile.Name != "empty-form.pdf")
                 {
                     // Upload the pdf and wait for a response.
                     Console.WriteLine($"Processing form {pdfFile.Name}...");
-                    Dictionary<string, string> thisFormData = await FormHandler.SendFormAsync(pdfFile.FullName, formConfidenceThreshold, fieldConfidenceThreshold);
+                    Dictionary<string, string> thisFormData = await FormHandler.SendFormAsync(pdfFile.FullName);
 
                     // Add this form data to our list of forms data
                     formsData.Add(thisFormData);
@@ -102,4 +96,3 @@ namespace ClaimForm_Importer
         }
     }
 }
-

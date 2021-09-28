@@ -10,7 +10,9 @@ namespace ClaimForm_Importer
 {
     static class FormHandler
     {
-        public static async Task<Dictionary<string, string>> SendFormAsync(string pdfPath, double formConfidenceThreshold, double fieldConfidenceThreshold)
+        public static double fieldConfidenceThreshold = 0.9;
+        public static double formConfidenceThreshold = 0.7;
+        public static async Task<Dictionary<string, string>> SendFormAsync(string pdfPath)
         {
             // Create pdf FileStream
             using var stream = new FileStream(pdfPath, FileMode.Open);
@@ -51,13 +53,13 @@ namespace ClaimForm_Importer
                 Console.WriteLine($"Form was analyzed with model with ID: {form.ModelId}");
                 foreach (FormField field in form.Fields.Values)
                 {
-                    string value = "";
+                    string fieldValue = "";
 
                     // Is the field a SelectionMark?
                     // NOTE: field confidence is very high on SelectionMarks, but a check could be added
                     if (field.Value.ValueType.ToString() == "SelectionMark")
                     {
-                        value = field.Value.AsSelectionMarkState().ToString();
+                        fieldValue = field.Value.AsSelectionMarkState().ToString();
                     }
                     else
                     {
@@ -65,7 +67,7 @@ namespace ClaimForm_Importer
                         if (field.ValueData == null)
                         {
                             Console.WriteLine($"{field.Name} is empty. Please manually enter the value:");
-                            value = Console.ReadLine();
+                            fieldValue = Console.ReadLine();
                         }
 
                         // Check for low field confidence
@@ -74,15 +76,15 @@ namespace ClaimForm_Importer
                             Console.WriteLine($"{field.Name} confidence({field.Confidence}) is below the threshold ({fieldConfidenceThreshold}).");
                             Console.WriteLine($"Got \"{field.ValueData.Text}\", please manually enter the correct value.");
 
-                            value = Console.ReadLine();
+                            fieldValue = Console.ReadLine();
                         }
 
                         // Assign the value for the field to what was guessed by ACS
                         else
-                            value = field.ValueData.Text;
+                            fieldValue = field.ValueData.Text;
                     }
                     // Add the determined value to the dictionary
-                    formData.Add(field.Name, value);
+                    formData.Add(field.Name, fieldValue);
                 }
             }
             return formData;
