@@ -49,6 +49,4 @@ ClaimForm-Importer.exe data/test
   - Would allow faster submission times on large folders while not exceeding API Rate limits. 
   - Would allow first results to reach Firebase while other submissions are still processing in Azure.
 
-- ACS Output should be validated by checking for field types in a separate method
-
 - Error handling for missing `.env` file or incorrect values
