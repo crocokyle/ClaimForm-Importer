@@ -10,8 +10,8 @@ namespace ClaimForm_Importer
 {
     public class FirebaseClient : IDatabaseClient
     {
-        public string Url { get; set; }
-        public string Database { get; set; }
+        public string Url;
+        public string Database;
         private string RequestUrl;
 
         public FirebaseClient(string url, string database)
