@@ -21,7 +21,7 @@ namespace ClaimForm_Importer
             this.RequestUrl = $"{this.Url}{this.Database}.json";
         }
 
-        public async Task<HttpResponseMessage> PostDataAsync(Dictionary<string, string> data)
+        public async Task UpdateAsync(Dictionary<string, string> data)
         {
             Console.WriteLine($"Sending data to {RequestUrl}...");
 
@@ -35,7 +35,14 @@ namespace ClaimForm_Importer
                     RequestUrl,
                     new StringContent(json, Encoding.UTF8, "application/json"));
 
-                return response;
+                // Check the response
+                if (response.StatusCode.ToString() == "OK")
+                    Console.WriteLine("Data sent to Firebase successfully!");
+                else
+                {
+                    Console.WriteLine("Data failed to send to Firebase with the following response:");
+                    Console.WriteLine(response.ToString());
+                }
             }
         }
     }

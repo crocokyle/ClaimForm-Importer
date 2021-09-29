@@ -43,18 +43,11 @@ namespace ClaimForm_Importer
                             Console.WriteLine("-----------------------------------------------------");
                             Console.WriteLine("\n");
 
-                            // Send the returned data to firebase and check the response
+                            // Send the returned data to firebase
                             string firebaseUrl = Environment.GetEnvironmentVariable("FIREBASE_URL");
                             string database = "CMS1500";
                             var firebaseClient = new FirebaseClient(firebaseUrl, database);
-                            var response = await firebaseClient.PostDataAsync(form);
-                            if (response.StatusCode.ToString() == "OK")
-                                Console.WriteLine("Data sent to Firebase successfully!");
-                            else
-                            {
-                                Console.WriteLine("Data failed to send to Firebase with the following response:");
-                                Console.WriteLine(response.ToString());
-                            }
+                            await firebaseClient.UpdateAsync(form);
                         }
                     }
                     else
