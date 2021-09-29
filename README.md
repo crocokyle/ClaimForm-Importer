@@ -36,9 +36,12 @@ ClaimForm.exe sample-data\test
 
 
 ## Future Improvments
+- `IDatabaseClient` is generic and should have a better implementation
+
 - `FormHandler` should have better encapsulation
   - Environment variables should be in a constructor or passed into the `SendFormAsync` method from main.
-  - `FormHandler` should have a child class of `Field` to handle various field types.
+
+- We need a `Field` class to handle various field types.
 
 - Eliminate processing the second useless page in the form
 
