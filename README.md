@@ -1,7 +1,7 @@
 # ClaimForm-Importer
 
 ## About
-A C# console app that reads [CMS1500](https://www.cms.gov/Medicare/CMS-Forms/CMS-Forms/CMS-Forms-Items/CMS1188854) health insurance forms from a folder, extracts the data with Azure Cognitive Services, and sends the information to Firebase.
+A C# console app that reads [CMS1500](https://www.cdc.gov/wtc/pdfs/policies/cms-1500-P.pdf) health insurance forms from a folder, extracts the data with Azure Cognitive Services, and sends the information to Firebase.
 
 ## Usage
 - Create a `.env` file within the same folder as `ClaimForm.exe`
