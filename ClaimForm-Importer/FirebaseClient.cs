@@ -8,10 +8,10 @@ using System.Net;
 
 namespace ClaimForm_Importer
 {
-    public class FirebaseClient
+    public class FirebaseClient : IDatabaseClient
     {
-        public string Url;
-        public string Database;
+        public string Url { get; set; }
+        public string Database { get; set; }
         private string RequestUrl;
 
         public FirebaseClient(string url, string database)
@@ -20,6 +20,7 @@ namespace ClaimForm_Importer
             this.Database = database;
             this.RequestUrl = $"{this.Url}{this.Database}.json";
         }
+
         public async Task<HttpResponseMessage> PostDataAsync(Dictionary<string, string> data)
         {
             Console.WriteLine($"Sending data to {RequestUrl}...");
