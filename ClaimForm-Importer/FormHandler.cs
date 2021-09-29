@@ -12,7 +12,7 @@ namespace ClaimForm_Importer
     {
         public static double fieldConfidenceThreshold = 0.9;
         public static double formConfidenceThreshold = 0.7;
-        public static async Task<Dictionary<string, string>> SendFormAsync(string pdfPath)
+        public static async Task<RecognizedFormCollection> SendFormAsync(string pdfPath)
         {
             // Create pdf FileStream
             using var stream = new FileStream(pdfPath, FileMode.Open);
@@ -30,6 +30,12 @@ namespace ClaimForm_Importer
             RecognizeCustomFormsOperation operation = await client.StartRecognizeCustomFormsAsync(modelId, stream);
             Response<RecognizedFormCollection> operationResponse = await operation.WaitForCompletionAsync();
             RecognizedFormCollection forms = operationResponse.Value;
+
+            return forms;
+        }
+
+        public static Dictionary<string, string> CorrectForm(RecognizedFormCollection forms)
+        { 
             Dictionary<string, string> formData = new Dictionary<string, string> { };
 
             // Iterate through the forms in the response
@@ -44,7 +50,7 @@ namespace ClaimForm_Importer
                     // Check for low form confidence
                     if (form.FormTypeConfidence.Value < formConfidenceThreshold)
                     {
-                        Console.WriteLine($"{pdfPath} confidence is below the threshold ({formConfidenceThreshold}).");
+                        Console.WriteLine($"Form confidence is below the threshold ({formConfidenceThreshold}).");
                         continue;
                     }
                 }

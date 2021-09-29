@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Azure.AI.FormRecognizer.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace ClaimForm_Importer
                 var directory = new DirectoryInfo(filepath);
                 if (Directory.Exists(directory?.FullName))
                 {
-                    // Process the forms
+                    // Send and correct the forms
                     List<Dictionary<string, string>> formsData = await ProcessPdfFilesAsync(directory);
 
                     // Check to see if we processed anything
@@ -87,9 +88,10 @@ namespace ClaimForm_Importer
             {
                 if (pdfFile.Name != "empty-form.pdf")
                 {
-                    // Upload the pdf and wait for a response.
+                    // Send the pdf and perform corrections.
                     Console.WriteLine($"Processing form {pdfFile.Name}...");
-                    Dictionary<string, string> thisFormData = await FormHandler.SendFormAsync(pdfFile.FullName);
+                    RecognizedFormCollection recognizedForm = await FormHandler.SendFormAsync(pdfFile.FullName);
+                    Dictionary<string, string> thisFormData = FormHandler.CorrectForm(recognizedForm);
 
                     // Add this form data to our list of forms data
                     formsData.Add(thisFormData);
